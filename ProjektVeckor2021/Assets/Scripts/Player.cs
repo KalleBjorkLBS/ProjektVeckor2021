@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float fallMultiplier;
     public float lowJumpMultiplier;
 
+    public float maxSpeed;
     private void Awake() {
         rb2D = GetComponent<Rigidbody2D>();
     }
@@ -41,4 +42,13 @@ public class Player : MonoBehaviour
         #endregion
         
     }
+     void FixedUpdate ()
+    {
+        if(rb2D.velocity.magnitude > maxSpeed)
+        {
+            rb2D.velocity = rb2D.velocity.normalized * maxSpeed;
+        }
+    }
+
+
 }
